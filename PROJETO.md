@@ -1,0 +1,102 @@
+# D-Dose — Registro do Projeto
+
+Este arquivo é a memória do projeto. Ele é atualizado ao final de cada etapa concluída do protocolo definido em `CLAUDE.md` (ver `C:\Users\flavi\Downloads\CLAUDE.md`). Releia-o no início de cada nova sessão de trabalho.
+
+## Etapa 1 — Ideação e Definição do Problema ✅
+
+**Problema:** cálculo da dose de fosfina em expurgos e diluição de produtos de desinsetização.
+
+**Público-alvo:** operadores e aplicadores.
+
+**Soluções existentes:** sites de revendedores de fosfina oferecem calculadoras, mas cada uma é restrita ao produto da própria marca.
+
+**Proposta de valor:** democratizar o cálculo de dose de fosfina e de produtos de desinsetização de qualquer marca (não só de um revendedor específico) — com todas as informações reunidas em um único app, algo que hoje não existe no mercado.
+
+**Nome do projeto:** D-Dose
+
+**Local do projeto:** `C:\Users\flavi\Desktop\Projetos\D-Dose`
+
+---
+
+## Etapa 2 — Planejamento e Requisitos ✅
+
+**Funcionalidades essenciais do MVP:**
+
+1. **Cadastro de grãos/culturas** — nome da cultura, densidade aparente (kg/m³), peso da saca (kg). Base para todos os cálculos de grãos.
+
+2. **Expurgo** — operador seleciona o grão já cadastrado, informa a quantidade em sacas OU toneladas, e o app calcula automaticamente a quantidade de fosfina (kg) necessária.
+
+3. **Volume m³ (Silo)** — operador seleciona a cultura, informa diâmetro do silo, altura dos grãos e altura do cone (quando houver), e o app calcula: toneladas, sacas, volume (m³) e quantidade de fumigante (kg), com base na dosagem de referência (ex: 6 g/m³).
+
+4. **Pilha m³** — mesma lógica do item 3, mas para pilhas de grãos: operador informa comprimento, largura e altura; o app calcula toneladas, sacas, volume (m³) e quantidade de fumigante.
+
+5. **Cadastro de pragas/insetos** — organizado por classe: Insetos Rasteiros, Insetos Voadores, Demais Pragas, Grãos Armazenados. Entidade própria (não embutida no cadastro do produto), permitindo que uma praga tenha vários produtos associados e um produto sirva a mais de uma praga.
+
+6. **Cadastro de produtos líquidos de desinsetização** — produto, praga(s) relacionada(s) (referência ao cadastro do item 5), área tratada e quadro de diluição conforme bula (ex: mL de produto por litros de água por m² tratado).
+
+7. **Fluxo de diluição** — o operador segue o caminho natural de uso em campo: seleciona a classe do inseto → seleciona a praga específica → o app mostra o(s) produto(s) cadastrado(s) para aquela praga → operador informa OU a área (m²) desejada OU a quantidade de produto que pretende usar → o app calcula automaticamente o outro lado (quantidade de produto + diluição em água, ou área que aquela quantidade cobre).
+
+8. **Avisos legais** — o app deve exibir avisos sobre uso restrito a aplicadores habilitados, isenção de responsabilidade sobre os cálculos e orientação para seguir a bula/EPI do produto.
+
+**Fora do MVP:** histórico de cálculos, login/conta de usuário, dados pessoais, pagamentos.
+
+**Prazo:** sem urgência definida.
+
+**Dados sensíveis:** nenhum. O app não terá login nem armazenará dados de usuário — uso é anônimo, focado em cálculo rápido em campo.
+
+**Requisitos legais/privacidade:** avisos legais de uso restrito e isenção de responsabilidade (ver item 8 do MVP). Sem dados pessoais, não há requisitos de LGPD aplicáveis por ora.
+
+**Contexto de uso:** ferramenta pensada para uso dinâmico em campo pelos operadores — fluxo simples, poucos campos, cálculo imediato.
+
+Registrado com base em referências visuais fornecidas (telas de app similar com abas Expurgo / Volume m³ / Pilha m³ / categorias de pragas, e rótulo de produto Bergard como exemplo de dados de bula).
+
+## Etapa 3 — Design e Prototipação ✅
+
+**Telas principais:**
+
+1. **Dashboard** — tela inicial, atalhos para Expurgo, Diluições e Cadastros.
+2. **Expurgo** — 3 sub-abas: Expurgo (sacas/toneladas), Volume m³ (silo: diâmetro + altura dos grãos + altura do cone), Pilha m³ (comprimento + largura + altura). Cada uma calcula toneladas, sacas, volume e quantidade de fosfina.
+3. **Diluições** — fluxo em 3 passos: classe do inseto (Insetos Rasteiros, Insetos Voadores, Demais Pragas, Grãos Armazenados) → praga específica → produto cadastrado → m² ou quantidade de produto → resultado.
+4. **Lista/Cadastros** — gerenciamento (CRUD) de grãos, pragas e produtos.
+5. **Avisos legais** — acessível via tela "Sobre" ou aviso de abertura.
+
+**Navegação:** barra inferior fixa com 4 ícones — Dashboard | Expurgo | Diluições | Lista.
+
+**Estilo visual:**
+
+- **Tema claro como padrão** (prioridade: legibilidade em campo, sob luz solar direta — alto contraste segura melhor a leitura ao ar livre do que tema escuro). **Tema escuro disponível como opção** via alternância manual (ícone sol/lua), preferência salva localmente no aparelho (sem login).
+- **Paleta tema claro:** fundo `#F7F6F2`, superfície `#FFFFFF`, texto `#1A1D1B`, módulo Grãos (âmbar) `#B8842A`, módulo Diluições (teal) `#1C6E8C`, alerta/aviso legal (amarelo-segurança) `#E0A400`.
+- **Paleta tema escuro:** fundo `#15181A`, superfície `#1F2326`, texto `#F2F1ED`, mesmos acentos clareados para manter contraste.
+- **Tipografia:** fonte utilitária robusta com algarismos tabulares (Inter ou IBM Plex Sans), peso Bold/Black nos números de resultado (elemento mais importante da tela).
+- **Elemento de identidade:** cor do módulo (âmbar = Grãos, teal = Diluições) aplicada de forma consistente na navegação, cabeçalhos e cards de resultado, para orientação rápida do operador em campo.
+- Áreas de toque grandes, pensadas para uso com luvas/pressa em campo.
+
+Base: telas de referência trazidas pelo usuário (estrutura de navegação e fluxo de diluição por classe de inseto) + recomendação de design considerando uso majoritariamente outdoor.
+
+## Etapa 4 — Escolha da Stack Tecnológica ✅
+
+- **Tipo de aplicativo:** web responsivo (acessado via navegador, incluindo celular). Sem app nativo/loja por enquanto.
+- **Frontend:** React + TypeScript + Vite, estilização com Tailwind CSS.
+- **Backend/Banco de dados:** Supabase (Postgres). Tabelas para grãos, pragas, produtos e relação praga↔produto.
+- **Segurança dos dados (RLS):** leitura do catálogo liberada para todos (sem login), escrita restrita ao usuário admin autenticado.
+- **Autenticação:** Supabase Auth, usada exclusivamente para o painel administrativo (o usuário do projeto). Operadores em campo nunca fazem login.
+- **Painel administrativo:** dentro do mesmo projeto/app, em rota protegida (ex: `/admin`), não é um projeto separado.
+- **Hospedagem do frontend:** Vercel.
+- **Uso offline:** não é requisito — assume-se conexão disponível no momento do uso.
+
+Usuário já pretende usar Supabase e pediu apoio na configuração — isso será conduzido na Etapa 5.
+
+## Etapa 5 — Configuração do Ambiente e Infraestrutura
+_Em aberto._
+
+## Etapa 6 — Desenvolvimento
+_Em aberto._
+
+## Etapa 7 — Testes
+_Em aberto._
+
+## Etapa 8 — Lançamento (Deploy)
+_Em aberto._
+
+## Etapa 9 — Pós-lançamento
+_Em aberto._
