@@ -240,8 +240,8 @@ export function ProdutoDetailAdmin() {
           <button
             type="submit"
             disabled={saving}
-            className="flex items-center gap-1 rounded px-4 py-2 font-medium text-white disabled:opacity-60"
-            style={{ background: 'var(--color-diluicao)' }}
+            className="flex items-center gap-1 rounded px-4 py-2 font-medium disabled:opacity-60"
+            style={{ background: 'var(--color-diluicao)', color: 'var(--color-on-accent)' }}
           >
             <Plus size={16} />
             {editingId ? (saving ? 'Salvando…' : 'Salvar alterações') : saving ? 'Adicionando…' : 'Adicionar diluição'}

@@ -120,7 +120,7 @@ export function Diluicoes() {
                     type="button"
                     onClick={() => setClasse(c)}
                     className="flex flex-col items-center gap-2 rounded-lg p-4 text-center text-sm font-medium"
-                    style={{ background: 'var(--color-diluicao)', color: '#fff' }}
+                    style={{ background: 'var(--color-diluicao)', color: 'var(--color-on-accent)' }}
                   >
                     <Icon size={28} />
                     {c}

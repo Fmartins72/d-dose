@@ -36,7 +36,7 @@ export function Lista() {
           type="button"
           onClick={() => setTab('graos')}
           className="rounded-full px-4 py-1.5 text-sm font-medium"
-          style={tab === 'graos' ? { background: 'var(--color-grao)', color: '#fff' } : { background: 'var(--color-surface)', opacity: 0.7, border: '1px solid color-mix(in srgb, var(--color-text) 12%, transparent)' }}
+          style={tab === 'graos' ? { background: 'var(--color-grao)', color: 'var(--color-on-accent)' } : { background: 'var(--color-surface)', opacity: 0.7, border: '1px solid color-mix(in srgb, var(--color-text) 12%, transparent)' }}
         >
           Grãos
         </button>
@@ -44,7 +44,7 @@ export function Lista() {
           type="button"
           onClick={() => setTab('produtos')}
           className="rounded-full px-4 py-1.5 text-sm font-medium"
-          style={tab === 'produtos' ? { background: 'var(--color-diluicao)', color: '#fff' } : { background: 'var(--color-surface)', opacity: 0.7, border: '1px solid color-mix(in srgb, var(--color-text) 12%, transparent)' }}
+          style={tab === 'produtos' ? { background: 'var(--color-diluicao)', color: 'var(--color-on-accent)' } : { background: 'var(--color-surface)', opacity: 0.7, border: '1px solid color-mix(in srgb, var(--color-text) 12%, transparent)' }}
         >
           Produtos
         </button>

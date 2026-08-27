@@ -3,13 +3,14 @@
 @theme {
   --font-sans: "Inter", system-ui, "Segoe UI", Roboto, sans-serif;
 
-  --color-bg: #f7f6f2;
+  --color-bg: #f6f5f4;
   --color-surface: #ffffff;
-  --color-text: #1a1d1b;
-  --color-grao: #4b7a3e;
-  --color-diluicao: #1c6e8c;
-  --color-alerta: #e0a400;
-  --color-neutro: #5b6470;
+  --color-text: #181920;
+  --color-grao: #8b9e1e;
+  --color-diluicao: #8b9e1e;
+  --color-alerta: #d6394c;
+  --color-neutro: #181920;
+  --color-on-accent: #ffffff;
 }
 
 :root {
@@ -18,9 +19,14 @@
 
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --color-bg: #15181a;
-  --color-surface: #1f2326;
-  --color-text: #f2f1ed;
+  --color-bg: #181920;
+  --color-surface: #212229;
+  --color-text: #f4f4f2;
+  --color-grao: #d9fa3d;
+  --color-diluicao: #d9fa3d;
+  --color-alerta: #e5495e;
+  --color-neutro: #f4f4f2;
+  --color-on-accent: #181920;
 }
 
 body {

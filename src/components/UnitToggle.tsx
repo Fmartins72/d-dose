@@ -16,7 +16,7 @@ export function UnitToggle<T extends string>({ options, value, onChange, accent 
           className="rounded-full px-4 py-1 text-sm font-medium"
           style={
             option.value === value
-              ? { background: accent, color: '#fff' }
+              ? { background: accent, color: 'var(--color-on-accent)' }
               : { color: 'var(--color-text)', opacity: 0.6 }
           }
         >

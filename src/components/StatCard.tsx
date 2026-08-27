@@ -12,7 +12,7 @@ export function StatCard({ label, value, unit, highlight, accent }: StatCardProp
       className="rounded-lg p-3"
       style={
         highlight
-          ? { background: accent, color: '#fff' }
+          ? { background: accent, color: 'var(--color-on-accent)' }
           : { background: 'var(--color-surface)', border: '1px solid color-mix(in srgb, var(--color-text) 12%, transparent)' }
       }
     >

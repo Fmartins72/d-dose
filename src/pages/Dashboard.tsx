@@ -21,7 +21,7 @@ export function Dashboard() {
             className="flex items-center gap-3 rounded-lg p-4"
             style={{ background: 'var(--color-surface)', border: '1px solid color-mix(in srgb, var(--color-text) 12%, transparent)' }}
           >
-            <div className="flex size-11 shrink-0 items-center justify-center rounded-full" style={{ background: accent, color: '#fff' }}>
+            <div className="flex size-11 shrink-0 items-center justify-center rounded-full" style={{ background: accent, color: 'var(--color-on-accent)' }}>
               <Icon size={22} />
             </div>
             <div>

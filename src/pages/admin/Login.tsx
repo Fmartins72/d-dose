@@ -71,8 +71,8 @@ export function Login() {
         <button
           type="submit"
           disabled={submitting}
-          className="w-full rounded py-2 font-medium text-white disabled:opacity-60"
-          style={{ background: 'var(--color-grao)' }}
+          className="w-full rounded py-2 font-medium disabled:opacity-60"
+          style={{ background: 'var(--color-grao)', color: 'var(--color-on-accent)' }}
         >
           {submitting ? 'Entrando…' : 'Entrar'}
         </button>

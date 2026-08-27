@@ -30,7 +30,7 @@ export function ExpurgoScreen() {
             className="whitespace-nowrap rounded-full px-4 py-1.5 text-sm font-medium"
             style={
               tab === t.value
-                ? { background: 'var(--color-grao)', color: '#fff' }
+                ? { background: 'var(--color-grao)', color: 'var(--color-on-accent)' }
                 : { background: 'var(--color-surface)', color: 'var(--color-text)', opacity: 0.7, border: '1px solid color-mix(in srgb, var(--color-text) 12%, transparent)' }
             }
           >
