@@ -5,7 +5,7 @@ const navItems = [
   { to: '/', label: 'Dashboard', icon: LayoutGrid, end: true, accent: 'var(--color-text)' },
   { to: '/expurgo', label: 'Expurgo', icon: Wind, end: false, accent: 'var(--color-grao)' },
   { to: '/diluicoes', label: 'Diluições', icon: FlaskConical, end: false, accent: 'var(--color-diluicao)' },
-  { to: '/lista', label: 'Lista', icon: List, end: false, accent: 'var(--color-text)' },
+  { to: '/lista', label: 'Lista', icon: List, end: false, accent: 'var(--color-neutro)' },
 ]
 
 export function BottomNav() {

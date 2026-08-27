@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const atalhos = [
   { to: '/expurgo', label: 'Expurgo', description: 'Fosfina para expurgo, silo ou pilha', icon: Wind, accent: 'var(--color-grao)' },
   { to: '/diluicoes', label: 'Diluições', description: 'Dose de produtos por praga', icon: FlaskConical, accent: 'var(--color-diluicao)' },
-  { to: '/lista', label: 'Lista', description: 'Consultar grãos e produtos cadastrados', icon: List, accent: 'var(--color-text)' },
+  { to: '/lista', label: 'Lista', description: 'Consultar grãos e produtos cadastrados', icon: List, accent: 'var(--color-neutro)' },
 ]
 
 export function Dashboard() {
