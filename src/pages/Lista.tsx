@@ -67,7 +67,7 @@ export function Lista() {
               <li key={g.id} className="py-3">
                 <p className="font-medium">{g.nome}</p>
                 <p className="text-xs opacity-60">
-                  {g.densidade_aparente_kg_m3} kg/m³ · saca {g.peso_saca_kg} kg · {g.dosagem_fumigante_g_m3} g/m³
+                  saca {g.peso_saca_kg} kg · {g.dosagem_fumigante_g_m3} g/m³
                 </p>
               </li>
             ))}
