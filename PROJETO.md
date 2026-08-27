@@ -86,8 +86,16 @@ Base: telas de referência trazidas pelo usuário (estrutura de navegação e fl
 
 Usuário já pretende usar Supabase e pediu apoio na configuração — isso será conduzido na Etapa 5.
 
-## Etapa 5 — Configuração do Ambiente e Infraestrutura
-_Em aberto._
+## Etapa 5 — Configuração do Ambiente e Infraestrutura ✅
+
+- **Repositório Git:** local (`git init`) + remoto em `https://github.com/Fmartins72/d-dose.git`, branch `main`, primeiro commit enviado.
+- **Scaffold do frontend:** Vite + React + TypeScript, Tailwind CSS v4 (via `@tailwindcss/vite`), tokens de tema (claro/escuro) da Etapa 3 aplicados em `src/index.css`.
+- **Cliente Supabase:** `@supabase/supabase-js` instalado, cliente configurado em `src/lib/supabaseClient.ts`, lendo `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY` do `.env`.
+- **Projeto Supabase:** criado pelo usuário (`mshpitftbijlutxbklcr`). URL do projeto e chave `anon public` configuradas em `.env` local (arquivo git-ignorado). `.env.example` versionado como referência, sem valores reais.
+- **Ambientes:** apenas um ambiente por enquanto (produção/dev único); separação fica para quando houver necessidade real (decisão da Etapa 4).
+- **Build verificado:** `npm run build` executa sem erros com a configuração atual.
+
+Ainda pendente para as próximas etapas: modelagem das tabelas no Supabase (grãos, pragas, produtos, relação praga↔produto) e políticas de RLS — isso será conduzido já como parte da Etapa 6 (Desenvolvimento), por ser trabalho de implementação da aplicação em si.
 
 ## Etapa 6 — Desenvolvimento
 _Em aberto._
