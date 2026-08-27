@@ -1,13 +1,15 @@
 import { useState } from 'react'
 
 import { ExpurgoCalc } from './ExpurgoCalc'
+import { PilhaGraos } from './PilhaGraos'
 import { VolumeSilo } from './VolumeSilo'
 
-type Tab = 'expurgo' | 'volume'
+type Tab = 'expurgo' | 'volume' | 'pilha'
 
 const tabs: { value: Tab; label: string }[] = [
   { value: 'expurgo', label: 'Expurgo' },
   { value: 'volume', label: 'Volume m³' },
+  { value: 'pilha', label: 'Pilha m³' },
 ]
 
 export function ExpurgoScreen() {
@@ -39,6 +41,7 @@ export function ExpurgoScreen() {
 
       {tab === 'expurgo' && <ExpurgoCalc />}
       {tab === 'volume' && <VolumeSilo />}
+      {tab === 'pilha' && <PilhaGraos />}
     </div>
   )
 }
