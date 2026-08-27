@@ -4,12 +4,13 @@ import { useEffect, useMemo, useState } from 'react'
 
 import { StatCard } from '../components/StatCard'
 import { UnitToggle } from '../components/UnitToggle'
+import { calcularDiluicao, type UnidadeEntradaDiluicao } from '../lib/calculosDiluicao'
 import { listProdutoPragasComNomeByPraga, type ProdutoPragaComNome } from '../lib/diluicoes'
 import { formatNumber } from '../lib/format'
 import { listPragas } from '../lib/pragas'
 import { CLASSES_PRAGA, type ClassePraga, type Praga } from '../types/praga'
 
-type UnidadeEntrada = 'area' | 'produto'
+type UnidadeEntrada = UnidadeEntradaDiluicao
 
 const classeIcons: Record<ClassePraga, typeof GiAnt> = {
   'Insetos Rasteiros': GiAnt,
@@ -64,13 +65,11 @@ export function Diluicoes() {
     const valor = Number(valorEntrada)
     if (!relacao || !valor || valor <= 0) return null
 
-    const fator = unidadeEntrada === 'area' ? valor / relacao.area_m2 : valor / relacao.dose_produto
-
-    return {
-      produto: fator * relacao.dose_produto,
-      diluenteL: fator * relacao.volume_diluente_l,
-      areaM2: fator * relacao.area_m2,
-    }
+    return calcularDiluicao(unidadeEntrada, valor, {
+      doseProduto: relacao.dose_produto,
+      volumeDiluenteL: relacao.volume_diluente_l,
+      areaM2: relacao.area_m2,
+    })
   }, [relacao, unidadeEntrada, valorEntrada])
 
   const pragasDaClasse = classe ? pragas.filter((p) => p.classe === classe) : []

@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 
 import { StatCard } from '../../components/StatCard'
+import { calcularVolumeSilo } from '../../lib/calculosGraos'
 import { listGraos } from '../../lib/graos'
 import type { Grao } from '../../types/grao'
 import { formatNumber } from '../../lib/format'
@@ -33,20 +34,16 @@ export function VolumeSilo() {
   const grao = graos.find((g) => g.id === graoId)
 
   const resultado = useMemo(() => {
-    const raio = Number(diametro) / 2
-    const alturaCilindro = Number(alturaGraos)
+    const diametroVal = Number(diametro)
+    const alturaGraosVal = Number(alturaGraos)
     const alturaConeVal = Number(alturaCone) || 0
-    if (!grao || !raio || raio <= 0 || !alturaCilindro || alturaCilindro <= 0) return null
+    if (!grao || !diametroVal || diametroVal <= 0 || !alturaGraosVal || alturaGraosVal <= 0) return null
 
-    const volumeCilindro = Math.PI * raio ** 2 * alturaCilindro
-    const volumeCone = alturaConeVal > 0 ? (Math.PI * raio ** 2 * alturaConeVal) / 3 : 0
-    const volumeM3 = volumeCilindro + volumeCone
-
-    const toneladas = (volumeM3 * grao.densidade_aparente_kg_m3) / 1000
-    const sacas = (toneladas * 1000) / grao.peso_saca_kg
-    const fosfinaKg = (volumeM3 * grao.dosagem_fumigante_g_m3) / 1000
-
-    return { toneladas, sacas, volumeM3, fosfinaKg }
+    return calcularVolumeSilo(diametroVal, alturaGraosVal, alturaConeVal, {
+      densidadeAparenteKgM3: grao.densidade_aparente_kg_m3,
+      pesoSacaKg: grao.peso_saca_kg,
+      dosagemFumiganteGM3: grao.dosagem_fumigante_g_m3,
+    })
   }, [grao, diametro, alturaGraos, alturaCone])
 
   if (error) {

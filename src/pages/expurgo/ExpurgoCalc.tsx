@@ -2,11 +2,12 @@ import { useEffect, useMemo, useState } from 'react'
 
 import { StatCard } from '../../components/StatCard'
 import { UnitToggle } from '../../components/UnitToggle'
+import { calcularExpurgo, type UnidadeQuantidade } from '../../lib/calculosGraos'
 import { listGraos } from '../../lib/graos'
 import type { Grao } from '../../types/grao'
 import { formatNumber } from '../../lib/format'
 
-type Unidade = 'sacas' | 'toneladas'
+type Unidade = UnidadeQuantidade
 
 const selectStyle = {
   borderColor: 'color-mix(in srgb, var(--color-text) 20%, transparent)',
@@ -38,12 +39,11 @@ export function ExpurgoCalc() {
     const qtd = Number(quantidade)
     if (!grao || !qtd || qtd <= 0) return null
 
-    const toneladas = unidade === 'toneladas' ? qtd : (qtd * grao.peso_saca_kg) / 1000
-    const sacas = unidade === 'sacas' ? qtd : (toneladas * 1000) / grao.peso_saca_kg
-    const volumeM3 = (toneladas * 1000) / grao.densidade_aparente_kg_m3
-    const fosfinaKg = (volumeM3 * grao.dosagem_fumigante_g_m3) / 1000
-
-    return { toneladas, sacas, volumeM3, fosfinaKg }
+    return calcularExpurgo(unidade, qtd, {
+      densidadeAparenteKgM3: grao.densidade_aparente_kg_m3,
+      pesoSacaKg: grao.peso_saca_kg,
+      dosagemFumiganteGM3: grao.dosagem_fumigante_g_m3,
+    })
   }, [grao, unidade, quantidade])
 
   if (error) {
