@@ -1,4 +1,4 @@
-import { Bird, Bug, ChevronLeft, Wheat } from 'lucide-react'
+import { Bird, Bug, ChevronLeft, ChevronRight, Wheat } from 'lucide-react'
 import { useEffect, useMemo, useState } from 'react'
 
 import { StatCard } from '../components/StatCard'
@@ -144,8 +144,13 @@ export function Diluicoes() {
             <ul className="divide-y" style={{ borderColor: 'color-mix(in srgb, var(--color-text) 12%, transparent)' }}>
               {pragasDaClasse.map((p) => (
                 <li key={p.id}>
-                  <button type="button" onClick={() => setPragaId(p.id)} className="w-full py-3 text-left font-medium">
+                  <button
+                    type="button"
+                    onClick={() => setPragaId(p.id)}
+                    className="flex w-full items-center justify-between py-3 text-left font-medium active:opacity-60"
+                  >
                     {p.nome}
+                    <ChevronRight size={18} className="opacity-40" />
                   </button>
                 </li>
               ))}
@@ -168,14 +173,17 @@ export function Diluicoes() {
             <ul className="divide-y" style={{ borderColor: 'color-mix(in srgb, var(--color-text) 12%, transparent)' }}>
               {relacoes.map((r) => (
                 <li key={r.id}>
-                  <button type="button" onClick={() => setRelacaoId(r.id)} className="w-full py-3 text-left">
-                    <p className="font-medium">
-                      {r.produto_nome}
-                      {r.metodo_aplicacao && <span className="opacity-60"> · {r.metodo_aplicacao}</span>}
-                    </p>
-                    <p className="text-xs opacity-60">
-                      {r.dose_produto} {r.unidade_dose} / {r.volume_diluente_l} L de água / {r.area_m2} m²
-                    </p>
+                  <button type="button" onClick={() => setRelacaoId(r.id)} className="flex w-full items-center justify-between py-3 text-left active:opacity-60">
+                    <div>
+                      <p className="font-medium">
+                        {r.produto_nome}
+                        {r.metodo_aplicacao && <span className="opacity-60"> · {r.metodo_aplicacao}</span>}
+                      </p>
+                      <p className="text-xs opacity-60">
+                        {r.dose_produto} {r.unidade_dose} / {r.volume_diluente_l} L de {r.tipo_diluente} / {r.area_m2} m²
+                      </p>
+                    </div>
+                    <ChevronRight size={18} className="opacity-40" />
                   </button>
                 </li>
               ))}
@@ -226,7 +234,7 @@ export function Diluicoes() {
           {resultado && (
             <div className="grid grid-cols-1 gap-3">
               <StatCard label="Produto necessário" value={formatNumber(resultado.produto)} unit={relacao.unidade_dose} accent="var(--color-diluicao)" highlight />
-              <StatCard label="Água/diluente" value={formatNumber(resultado.diluenteL)} unit="L" accent="var(--color-diluicao)" />
+              <StatCard label={relacao.tipo_diluente} value={formatNumber(resultado.diluenteL)} unit="L" accent="var(--color-diluicao)" />
               <StatCard label="Área coberta" value={formatNumber(resultado.areaM2)} unit="m²" accent="var(--color-diluicao)" />
             </div>
           )}

@@ -20,6 +20,7 @@ const emptyForm = {
   dose_produto: '',
   unidade_dose: 'mL' as 'mL' | 'L',
   volume_diluente_l: '',
+  tipo_diluente: 'Água',
   area_m2: '',
 }
 
@@ -69,6 +70,7 @@ export function ProdutoDetailAdmin() {
       dose_produto: String(rel.dose_produto),
       unidade_dose: rel.unidade_dose,
       volume_diluente_l: String(rel.volume_diluente_l),
+      tipo_diluente: rel.tipo_diluente,
       area_m2: String(rel.area_m2),
     })
   }
@@ -90,6 +92,7 @@ export function ProdutoDetailAdmin() {
       dose_produto: Number(form.dose_produto),
       unidade_dose: form.unidade_dose,
       volume_diluente_l: Number(form.volume_diluente_l),
+      tipo_diluente: form.tipo_diluente.trim() || 'Água',
       area_m2: Number(form.area_m2),
     }
     try {
@@ -177,9 +180,16 @@ export function ProdutoDetailAdmin() {
 
         <div>
           <label className="mb-1 block text-sm font-medium" htmlFor="diluente">
-            Água/diluente (L)
+            Quantidade de diluente (L)
           </label>
           <input id="diluente" type="number" inputMode="decimal" step="0.01" min="0.01" required value={form.volume_diluente_l} onChange={(e) => setForm({ ...form, volume_diluente_l: e.target.value })} className="w-full rounded border px-3 py-2" style={inputStyle} />
+        </div>
+
+        <div>
+          <label className="mb-1 block text-sm font-medium" htmlFor="tipoDiluente">
+            Tipo de diluente
+          </label>
+          <input id="tipoDiluente" placeholder="Ex: Água, Óleo mineral" required value={form.tipo_diluente} onChange={(e) => setForm({ ...form, tipo_diluente: e.target.value })} className="w-full rounded border px-3 py-2" style={inputStyle} />
         </div>
 
         <div>
@@ -225,7 +235,7 @@ export function ProdutoDetailAdmin() {
                   {rel.metodo_aplicacao && <span className="opacity-60"> · {rel.metodo_aplicacao}</span>}
                 </p>
                 <p className="text-xs opacity-60">
-                  {rel.dose_produto} {rel.unidade_dose} / {rel.volume_diluente_l} L de água / {rel.area_m2} m²
+                  {rel.dose_produto} {rel.unidade_dose} / {rel.volume_diluente_l} L de {rel.tipo_diluente} / {rel.area_m2} m²
                 </p>
               </div>
               <div className="flex gap-2">

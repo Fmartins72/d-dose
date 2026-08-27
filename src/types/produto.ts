@@ -13,6 +13,7 @@ export interface ProdutoPraga {
   dose_produto: number
   unidade_dose: 'mL' | 'L'
   volume_diluente_l: number
+  tipo_diluente: string
   area_m2: number
   created_at: string
 }
