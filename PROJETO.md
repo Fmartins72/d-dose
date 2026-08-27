@@ -124,8 +124,19 @@ Ajustes feitos durante o desenvolvimento:
 
 Todas as 8 funcionalidades do MVP definidas na Etapa 2 estão implementadas e testadas manualmente pelo usuário durante o desenvolvimento (build sem erros a cada etapa).
 
-## Etapa 7 — Testes
-_Em aberto._
+## Etapa 7 — Testes ✅
+
+- **Testes automatizados:** 8 testes com Vitest (`npm test`) cobrindo as fórmulas de Expurgo, Volume m³, Pilha m³ e Diluições, validados contra números reais conferidos pelo usuário durante a Etapa 6.
+- **Testes manuais:** login/logout do admin, alternância de tema (persistência via localStorage), fluxo completo de Diluições (classe → praga → produto → cálculo), navegação do Dashboard, CRUD de grãos/pragas/produtos — todos testados pelo usuário ao longo do desenvolvimento.
+- **Dispositivo/navegador:** sem prioridade específica — uso normal em celular Android.
+- **Problemas encontrados e corrigidos:**
+  - Tradução automática do Chrome alterando texto da UI (`lang="pt-BR"` no `index.html`).
+  - Ícone da Lista invisível no tema escuro (cor neutra fixa).
+  - Falta de affordance visual nas listas clicáveis de Diluições (seta adicionada).
+  - Contraste quebrado ao adotar o lima como cor de destaque no tema escuro (token `--color-on-accent`).
+  - Densidade aparente removida da lista pública de grãos (informação técnica desnecessária para o operador).
+
+Sem bugs conhecidos em aberto.
 
 ## Etapa 8 — Lançamento (Deploy)
 _Em aberto._
