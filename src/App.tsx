@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import { RequireAuth } from './auth/RequireAuth'
 import { AdminLayout } from './layouts/AdminLayout'
 import { AppLayout } from './layouts/AppLayout'
+import { AvisoLegal } from './pages/AvisoLegal'
 import { Dashboard } from './pages/Dashboard'
 import { Diluicoes } from './pages/Diluicoes'
 import { Lista } from './pages/Lista'
@@ -21,6 +22,7 @@ function App() {
         <Route path="expurgo" element={<ExpurgoScreen />} />
         <Route path="diluicoes" element={<Diluicoes />} />
         <Route path="lista" element={<Lista />} />
+        <Route path="aviso-legal" element={<AvisoLegal />} />
       </Route>
 
       <Route path="admin/login" element={<Login />} />
