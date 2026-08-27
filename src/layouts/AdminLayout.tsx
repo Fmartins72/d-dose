@@ -6,6 +6,8 @@ import { ThemeToggle } from '../components/ThemeToggle'
 
 const adminNavItems = [
   { to: '/admin', label: 'Grãos', end: true },
+  { to: '/admin/pragas', label: 'Pragas', end: false },
+  { to: '/admin/produtos', label: 'Produtos', end: false },
 ]
 
 export function AdminLayout() {

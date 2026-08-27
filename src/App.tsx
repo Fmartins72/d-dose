@@ -9,6 +9,9 @@ import { Lista } from './pages/Lista'
 import { ExpurgoScreen } from './pages/expurgo/ExpurgoScreen'
 import { GraosAdmin } from './pages/admin/GraosAdmin'
 import { Login } from './pages/admin/Login'
+import { PragasAdmin } from './pages/admin/PragasAdmin'
+import { ProdutoDetailAdmin } from './pages/admin/ProdutoDetailAdmin'
+import { ProdutosAdmin } from './pages/admin/ProdutosAdmin'
 
 function App() {
   return (
@@ -30,6 +33,9 @@ function App() {
         }
       >
         <Route index element={<GraosAdmin />} />
+        <Route path="pragas" element={<PragasAdmin />} />
+        <Route path="produtos" element={<ProdutosAdmin />} />
+        <Route path="produtos/:id" element={<ProdutoDetailAdmin />} />
       </Route>
     </Routes>
   )
