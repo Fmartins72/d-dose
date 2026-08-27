@@ -138,6 +138,8 @@ Todas as 8 funcionalidades do MVP definidas na Etapa 2 estão implementadas e te
 
 Sem bugs conhecidos em aberto.
 
+**Reconfirmação de decisão (pós-Etapa 7):** o usuário considerou adicionar login para operadores (senha única compartilhada, ou contas individuais) para poder monitorar/excluir acesso. Foi apontada uma contradição: senha compartilhada não permite identificação/exclusão individual; conta individual exige login a cada uso, contrariando o requisito de app "dinâmico e sem fricção" da Etapa 2. Decisão: **manter sem login para operadores** — Dashboard, Expurgo, Diluições e Lista continuam de acesso livre e anônimo. Painel admin continua como único ponto autenticado, sem mudanças.
+
 ## Etapa 8 — Lançamento (Deploy)
 _Em aberto._
 
