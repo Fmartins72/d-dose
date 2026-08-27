@@ -5,8 +5,8 @@ import { AdminLayout } from './layouts/AdminLayout'
 import { AppLayout } from './layouts/AppLayout'
 import { Dashboard } from './pages/Dashboard'
 import { Diluicoes } from './pages/Diluicoes'
-import { Expurgo } from './pages/Expurgo'
 import { Lista } from './pages/Lista'
+import { ExpurgoScreen } from './pages/expurgo/ExpurgoScreen'
 import { GraosAdmin } from './pages/admin/GraosAdmin'
 import { Login } from './pages/admin/Login'
 
@@ -15,7 +15,7 @@ function App() {
     <Routes>
       <Route element={<AppLayout />}>
         <Route index element={<Dashboard />} />
-        <Route path="expurgo" element={<Expurgo />} />
+        <Route path="expurgo" element={<ExpurgoScreen />} />
         <Route path="diluicoes" element={<Diluicoes />} />
         <Route path="lista" element={<Lista />} />
       </Route>
