@@ -1,4 +1,5 @@
-import { Bird, Bug, ChevronLeft, ChevronRight, Wheat } from 'lucide-react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { GiAnt, GiFly, GiLongLeggedSpider, GiWheat } from 'react-icons/gi'
 import { useEffect, useMemo, useState } from 'react'
 
 import { StatCard } from '../components/StatCard'
@@ -10,11 +11,11 @@ import { CLASSES_PRAGA, type ClassePraga, type Praga } from '../types/praga'
 
 type UnidadeEntrada = 'area' | 'produto'
 
-const classeIcons: Record<ClassePraga, typeof Bug> = {
-  'Insetos Rasteiros': Bug,
-  'Insetos Voadores': Bird,
-  'Demais Pragas': Bug,
-  'Grãos Armazenados': Wheat,
+const classeIcons: Record<ClassePraga, typeof GiAnt> = {
+  'Insetos Rasteiros': GiAnt,
+  'Insetos Voadores': GiFly,
+  'Demais Pragas': GiLongLeggedSpider,
+  'Grãos Armazenados': GiWheat,
 }
 
 const inputStyle = {
