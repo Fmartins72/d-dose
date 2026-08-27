@@ -97,8 +97,32 @@ Usuário já pretende usar Supabase e pediu apoio na configuração — isso ser
 
 Ainda pendente para as próximas etapas: modelagem das tabelas no Supabase (grãos, pragas, produtos, relação praga↔produto) e políticas de RLS — isso será conduzido já como parte da Etapa 6 (Desenvolvimento), por ser trabalho de implementação da aplicação em si.
 
-## Etapa 6 — Desenvolvimento
-_Em aberto._
+## Etapa 6 — Desenvolvimento ✅
+
+Ordem de implementação seguida (confirmada antes de começar):
+
+1. Base do app — roteamento, layout, navegação inferior, alternância de tema claro/escuro.
+2. Modelagem do banco de grãos (Supabase) + RLS.
+3. Painel admin — autenticação (Supabase Auth) + CRUD de grãos.
+4. Expurgo — cálculo por sacas/toneladas.
+5. Volume m³ (Silo) — cilindro + cone opcional.
+6. Pilha m³ — comprimento × largura × altura.
+7. Modelagem do banco de pragas e produtos (`pragas`, `produtos`, `produto_pragas`) + RLS.
+8. Painel admin — CRUD de pragas e produtos, com diluição por praga/método de aplicação (incluindo tipo de diluente — água ou óleo mineral, ex: FOG).
+9. Fluxo de Diluições — classe do inseto → praga → produto/método → cálculo (área ou quantidade de produto).
+10. Avisos legais — modal de aceite no primeiro acesso + página `/aviso-legal`.
+11. Lista — catálogo de consulta somente leitura (grãos e produtos/diluições), acessível sem login.
+12. Dashboard — atalhos para Expurgo, Diluições e Lista.
+
+Ajustes feitos durante o desenvolvimento:
+- `index.html` com `lang="pt-BR"` (evitar tradução automática do navegador alterando texto da UI).
+- Campo "tipo de diluente" adicionado a `produto_pragas` (nem todo produto usa água — FOG usa óleo mineral).
+- "Método de aplicação" virou um seletor com opções padronizadas (Pulverização, Termonebulização/FOG, UBV, Aspersão, Polvilhamento, Iscagem) + opção "Outro".
+- Ícones de classe de praga trocados de lucide-react para Game Icons (`react-icons/gi`) — visual mais sóbrio.
+- Cor do módulo Grãos/Expurgo trocada de âmbar para verde musgo (`#4b7a3e`).
+- Cor neutra fixa (`#5b6470`) para o item "Lista", evitando ícone branco sobre fundo quase branco no tema escuro.
+
+Todas as 8 funcionalidades do MVP definidas na Etapa 2 estão implementadas e testadas manualmente pelo usuário durante o desenvolvimento (build sem erros a cada etapa).
 
 ## Etapa 7 — Testes
 _Em aberto._
