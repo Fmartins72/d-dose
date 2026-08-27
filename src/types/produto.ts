@@ -1,3 +1,12 @@
+export const METODOS_APLICACAO = [
+  'Pulverização',
+  'Termonebulização (FOG)',
+  'UBV (Ultra Baixo Volume)',
+  'Aspersão',
+  'Polvilhamento',
+  'Iscagem',
+] as const
+
 export interface Produto {
   id: string
   nome: string

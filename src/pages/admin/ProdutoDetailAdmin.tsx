@@ -12,7 +12,9 @@ import {
   updateProdutoPraga,
 } from '../../lib/produtos'
 import type { Praga } from '../../types/praga'
-import type { Produto, ProdutoPraga } from '../../types/produto'
+import { METODOS_APLICACAO, type Produto, type ProdutoPraga } from '../../types/produto'
+
+const OUTRO = 'Outro'
 
 const emptyForm = {
   praga_id: '',
@@ -40,6 +42,7 @@ export function ProdutoDetailAdmin() {
   const [editingId, setEditingId] = useState<string | null>(null)
   const [form, setForm] = useState(emptyForm)
   const [saving, setSaving] = useState(false)
+  const [metodoCustom, setMetodoCustom] = useState(false)
 
   const load = async () => {
     if (!id) return
@@ -73,11 +76,13 @@ export function ProdutoDetailAdmin() {
       tipo_diluente: rel.tipo_diluente,
       area_m2: String(rel.area_m2),
     })
+    setMetodoCustom(!!rel.metodo_aplicacao && !METODOS_APLICACAO.includes(rel.metodo_aplicacao as (typeof METODOS_APLICACAO)[number]))
   }
 
   const cancelEdit = () => {
     setEditingId(null)
     setForm(emptyForm)
+    setMetodoCustom(false)
   }
 
   const handleSubmit = async (event: FormEvent) => {
@@ -158,7 +163,39 @@ export function ProdutoDetailAdmin() {
           <label className="mb-1 block text-sm font-medium" htmlFor="metodo">
             Método de aplicação (opcional)
           </label>
-          <input id="metodo" placeholder="Ex: Pulverização, FOG, UBV" value={form.metodo_aplicacao} onChange={(e) => setForm({ ...form, metodo_aplicacao: e.target.value })} className="w-full rounded border px-3 py-2" style={inputStyle} />
+          <select
+            id="metodo"
+            value={metodoCustom ? OUTRO : form.metodo_aplicacao}
+            onChange={(e) => {
+              if (e.target.value === OUTRO) {
+                setMetodoCustom(true)
+                setForm({ ...form, metodo_aplicacao: '' })
+              } else {
+                setMetodoCustom(false)
+                setForm({ ...form, metodo_aplicacao: e.target.value })
+              }
+            }}
+            className="w-full rounded border px-3 py-2"
+            style={inputStyle}
+          >
+            <option value="">Não especificado</option>
+            {METODOS_APLICACAO.map((metodo) => (
+              <option key={metodo} value={metodo}>
+                {metodo}
+              </option>
+            ))}
+            <option value={OUTRO}>Outro…</option>
+          </select>
+          {metodoCustom && (
+            <input
+              autoFocus
+              placeholder="Especifique o método"
+              value={form.metodo_aplicacao}
+              onChange={(e) => setForm({ ...form, metodo_aplicacao: e.target.value })}
+              className="mt-2 w-full rounded border px-3 py-2"
+              style={inputStyle}
+            />
+          )}
         </div>
 
         <div>
